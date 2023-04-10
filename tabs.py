@@ -4,3 +4,9 @@ from tkinter import ttk
 class GPSFrame(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
+        self.temp_label = tk.Label(self, text = 'CameraFeed;Graph;Control;')
+        self.temp_label.pack(side='left', padx=10, pady=10)
+
+        self.temp_value = tk.Label(self, text='3')
+        self.temp_value.pack(side='left', padx=10, pady=10)
+
