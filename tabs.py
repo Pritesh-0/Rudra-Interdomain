@@ -1,14 +1,23 @@
 import tkinter as tk
 from tkinter import ttk
+from gps_tab import *
 
 class GPSTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
-        self.temp_label = tk.Label(self, text = 'CameraFeed;Graph;Control;')
-        self.temp_label.pack(side='left', padx=10, pady=10)
 
-        self.temp_value = tk.Label(self, text='3')
-        self.temp_value.pack(side='left', padx=10, pady=10)
+        graph_frame = GraphFrame(self)
+        camera_feed_frame = CameraFeedFrame(self)
+        control_frame = ControlFrame(self)
+
+        graph_frame.grid(row=0, column=0, rowspan=2, sticky='nsew')
+        camera_feed_frame.grid(row=0, column=1, sticky='nsew')
+        control_frame.grid(row=1, column=1, sticky='nsew')
+
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
         
 class StandardTab(ttk.Frame):
     def __init__(self, parent):
