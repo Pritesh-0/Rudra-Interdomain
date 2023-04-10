@@ -19,4 +19,12 @@ class StandardFrame(ttk.Frame):
         self.angle_value = tk.Label(self, text='2')
         self.angle_value.pack(side='left', padx=10, pady=10)
 
+class SettingsFrame(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.speed_label = tk.Label(self, text='ConfigSettings;FAilSafes')
+        self.speed_label.pack(side='left', padx=10, pady=10)
+
+        self.speed_value = tk.Label(self, text='2')
+        self.speed_value.pack(side='left', padx=10, pady=10)
 
