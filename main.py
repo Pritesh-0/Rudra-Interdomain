@@ -11,10 +11,10 @@ class MainApp(tk.Frame):
         self.notebook = ttk.Notebook(self.parent)
         self.notebook.pack(fill='both', expand=True)
         
-        self.tab1 = GPSFrame(self.notebook)
-        self.tab2 = StandardFrame(self.notebook)
-        self.tab3 = SettingsFrame(self.notebook)
-        self.tab4 = LogsFrame(self.notebook)
+        self.tab1 = GPSTab(self.notebook)
+        self.tab2 = StandardTab(self.notebook)
+        self.tab3 = SettingsTab(self.notebook)
+        self.tab4 = LogsTab(self.notebook)
         
         self.notebook.add(self.tab1, text='GPS')
         self.notebook.add(self.tab2, text='Standard')

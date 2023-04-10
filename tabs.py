@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-class GPSFrame(ttk.Frame):
+class GPSTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.temp_label = tk.Label(self, text = 'CameraFeed;Graph;Control;')
@@ -10,7 +10,7 @@ class GPSFrame(ttk.Frame):
         self.temp_value = tk.Label(self, text='3')
         self.temp_value.pack(side='left', padx=10, pady=10)
         
-class StandardFrame(ttk.Frame):
+class StandardTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.angle_label = tk.Label(self, text='Stats;AnalyzedData;')
@@ -19,7 +19,7 @@ class StandardFrame(ttk.Frame):
         self.angle_value = tk.Label(self, text='2')
         self.angle_value.pack(side='left', padx=10, pady=10)
 
-class SettingsFrame(ttk.Frame):
+class SettingsTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.speed_label = tk.Label(self, text='ConfigSettings;FAilSafes')
@@ -28,7 +28,7 @@ class SettingsFrame(ttk.Frame):
         self.speed_value = tk.Label(self, text='2')
         self.speed_value.pack(side='left', padx=10, pady=10)
         
-class LogsFrame(ttk.Frame):
+class LogsTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.log_text = tk.Text(self)
