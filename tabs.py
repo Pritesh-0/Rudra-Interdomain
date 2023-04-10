@@ -27,4 +27,16 @@ class SettingsFrame(ttk.Frame):
 
         self.speed_value = tk.Label(self, text='2')
         self.speed_value.pack(side='left', padx=10, pady=10)
+        
+class LogsFrame(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.log_text = tk.Text(self)
+        self.log_text.pack(fill='both', expand=True, padx=10, pady=10)
+
+        self.log_scrollbar = ttk.Scrollbar(self, orient='vertical', command=self.log_text.yview)
+        self.log_scrollbar.pack(side='right', fill='y')
+
+        self.log_text.configure(yscrollcommand=self.log_scrollbar.set)
+
 
