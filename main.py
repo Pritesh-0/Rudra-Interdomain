@@ -1,5 +1,23 @@
+import tkinter as tk
+from tkinter import ttk
+import
+
 class MainApp(tk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.parent = parent
         self.parent.title("Cave Wall Climbing Robot GUI")
+        
+        self.notebook = ttk.Notebook(self.parent)
+        self.notebook.pack(fill='both', expand=True)
+        
+        self.tab1 = GPSFrame(self.notebook)
+        self.tab2 = StandardFrame(self.notebook)
+        self.tab3 = SettingsFrame(self.notebook)
+        self.tab4 = LogsFrame(self.notebook)
+        
+        self.notebook.add(self.tab1, text='GPS')
+        self.notebook.add(self.tab2, text='Standard')
+        self.notebook.add(self.tab3, text='Settings')
+        self.notebook.add(self.tab4, text='Logs')
+
