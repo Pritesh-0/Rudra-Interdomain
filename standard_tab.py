@@ -1,5 +1,5 @@
-import tkinter as ttk
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 
 class StatsFrame(ttk.Frame):
     def __init__(self, master):

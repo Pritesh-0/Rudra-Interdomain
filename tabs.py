@@ -23,11 +23,25 @@ class GPSTab(ttk.Frame):
 class StandardTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
+        
+        stats_frame_1 = StatsFrame(self)
+        stats_frame_2 = StatsFrame(self)
+        
+        stats_frame_1.grid(row=0, column=1, sticky='nsew')
+        stats_frame_2.grid(row=0, column=0, sticky='nsew')
+        
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+        
+        '''
         self.angle_label = tk.Label(self, text='Stats;AnalyzedData;')
         self.angle_label.pack(side='left', padx=10, pady=10)
 
         self.angle_value = tk.Label(self, text='2')
         self.angle_value.pack(side='left', padx=10, pady=10)
+        '''
 
 class SettingsTab(ttk.Frame):
     def __init__(self, parent):
