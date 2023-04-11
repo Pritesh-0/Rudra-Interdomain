@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from gps_tab import *
+from standard_tab import *
 
 class GPSTab(ttk.Frame):
     def __init__(self, parent):
