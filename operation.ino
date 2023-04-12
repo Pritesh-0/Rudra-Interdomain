@@ -1,21 +1,24 @@
 #include <Servo.h>
 
 Servo arm[2][2];
-const int arm_pin[2][2]={{l,t},{a1,a2}};
-const int gripper[2][2]={{g11,g12},{g21,g22}};
-const int misson[2]={{m11,m12},{m21,m22}};
+const int arm_pin[2][2]={{l,t},{a1,a2}}; //a1,a2 have l(lift) and t(turn) pins
+const int gripper[2][2]={{g11,g12},{g21,g22}}; //gnm, n(motor no.) m(pin no.)
+const int misson[2]={{m11,m12},{m21,m22}}; //mpq, p(motor no.) q(pin no.)
 
 void setup() {
+  //initalize and pin setup
   for (int i=0;i<2;i++){
     for (int j=0;j<2;j++){
       arm[i][j].attach(arm_pin[i][j]);
       pinMode(gripper[i][j],OUTPUT);
+      pinMode(misson[i][j],OUTPUT);
     }
   }
 
   for (int i=0;i<2;i++){
     for (int j=0;j<2;j++){
       digitalWrite(gripper[i][j], LOW);
+      digitalWrite(misson[i][j], LOW);
     }
   }
   
@@ -25,7 +28,6 @@ void loop() {
   move(30,45);
   delay(3000);   
 }
-
 
 
 void drill(misson[2],int arm_no,int x){
