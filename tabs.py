@@ -22,4 +22,16 @@ class CameraFeed:
 
         camerafeed_label = Gtk.Label(label="Camera Feed")
         camerafeed_container.pack_start(camerafeed_label, True, True, 0)
+        
+   
+class Controls:
+    def __init__(self):
+        self.controls_frame = Gtk.Frame(label="Controls")
+        
+        controls_container = Gtk.Box()
+        self.controls_frame.add(controls_container)
+
+        controls_label = Gtk.Label(label="Controls")
+        controls_container.pack_start(controls_label, True, True, 0)
+
 
