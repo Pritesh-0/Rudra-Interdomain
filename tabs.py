@@ -1,58 +1,20 @@
-import tkinter as tk
-from tkinter import ttk
-from gps_tab import *
-from standard_tab import *
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
-class GPSTab(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
+class Graph(Gtk.Window):
 
-        graph_frame = GraphFrame(self)
-        camera_feed_frame = CameraFeedFrame(self)
-        control_frame = ControlFrame(self)
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Graph Window")
 
-        graph_frame.grid(row=0, column=0, rowspan=2, sticky='nsew')
-        camera_feed_frame.grid(row=0, column=1, sticky='nsew')
-        control_frame.grid(row=1, column=1, sticky='nsew')
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        self.add(self.main_box)
+        graph_frame = Gtk.Frame(label="Graph Frame")
+        self.main_box.pack_start(graph_frame, True, True, 0)
 
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=1)
-        self.rowconfigure(0, weight=1)
-        self.rowconfigure(1, weight=1)
-        
-class StandardTab(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        
-        stats_frame_1 = StatsFrame(self)
-        stats_frame_2 = StatsFrame(self)
-        
-        stats_frame_1.grid(row=0, column=1, sticky='nsew')
-        stats_frame_2.grid(row=0, column=0, sticky='nsew')
-        
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=1)
-        self.rowconfigure(0, weight=1)
-        self.rowconfigure(1, weight=1)
-
-class SettingsTab(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.speed_label = tk.Label(self, text='ConfigSettings;FAilSafes')
-        self.speed_label.pack(side='left', padx=10, pady=10)
-
-        self.speed_value = tk.Label(self, text='2')
-        self.speed_value.pack(side='left', padx=10, pady=10)
-        
-class LogsTab(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.log_text = tk.Text(self)
-        self.log_text.pack(fill='both', expand=True, padx=10, pady=10)
-
-        self.log_scrollbar = ttk.Scrollbar(self, orient='vertical', command=self.log_text.yview)
-        self.log_scrollbar.pack(side='right', fill='y')
-
-        self.log_text.configure(yscrollcommand=self.log_scrollbar.set)
-
+        self.graph_container = Gtk.Box()
+        graph_frame.add(self.graph_container)
+        graph_frame.set_size_request(400, 400)
+        graph_label = Gtk.Label(label="Graph")
+        self.graph_container.pack_start(graph_label, True, True, 0)
 
