@@ -1,7 +1,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from tabs import Graph
+from tabs import *
 
 
 class MainApp(Gtk.Window):
@@ -14,10 +14,13 @@ class MainApp(Gtk.Window):
         self.set_decorated(True)
         
         graph_gui = Graph()
-        graph_frame = graph_gui.graph_container.get_parent()
-        graph_frame.remove(graph_gui.graph_container)
-        self.add(graph_gui.graph_container)
+        camerafeed_gui = CameraFeed()
         
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        box.pack_start(camerafeed_gui.camerafeed_frame, True, True, 0)
+        box.pack_start(graph_gui.graph_frame, True, True, 0)
+        
+        self.add(box)
         
 
 if __name__ == '__main__':
