@@ -33,5 +33,17 @@ class Controls:
 
         controls_label = Gtk.Label(label="Controls")
         controls_container.pack_start(controls_label, True, True, 0)
+        
+        
+class Status:
+    def __init__(self):
+        self.status_frame = Gtk.Frame(label="Status")
+        
+        status_container = Gtk.Box()
+        self.status_frame.add(status_container)
+
+        status_label = Gtk.Label(label="Status")
+        status_container.pack_start(status_label, True, True, 0)
+
 
 
