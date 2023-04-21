@@ -34,14 +34,6 @@ class StandardTab(ttk.Frame):
         self.columnconfigure(1, weight=1)
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
-        
-        '''
-        self.angle_label = tk.Label(self, text='Stats;AnalyzedData;')
-        self.angle_label.pack(side='left', padx=10, pady=10)
-
-        self.angle_value = tk.Label(self, text='2')
-        self.angle_value.pack(side='left', padx=10, pady=10)
-        '''
 
 class SettingsTab(ttk.Frame):
     def __init__(self, parent):
