@@ -13,3 +13,10 @@ class SingleGraph(Gtk.Box):
         self.canvas = FigureCanvas(self.fig)
         self.add(self.canvas)
         self.ax.set_title(self.title)
+
+    def update_data(self, x_data, y_data):
+        self.ax.clear()
+        self.ax.plot(x_data, y_data)
+        self.ax.set_title(self.title)
+        self.canvas.draw()
+
