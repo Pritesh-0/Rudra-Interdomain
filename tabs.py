@@ -1,17 +1,21 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from graphs import *
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg
+
 
 class Graph:
     def __init__(self):
         self.graph_frame = Gtk.Frame(label="Graph")
-        
         graph_container = Gtk.Box()
         self.graph_frame.add(graph_container)
-
-        graph_label = Gtk.Label(label="Graph")
-        graph_container.pack_start(graph_label, True, True, 0)
         
+        single_graph = SingleGraph()
+        single_graph.set_size_request(400, 300)
+        graph_container.pack_start(single_graph.canvas, False, False, 0)
+
         
 class CameraFeed:
     def __init__(self):
@@ -44,6 +48,17 @@ class Status:
 
         status_label = Gtk.Label(label="Status")
         status_container.pack_start(status_label, True, True, 0)
+        
+
+class Log:
+    def __init__(self):
+        self.log_frame = Gtk.Frame(label="Log")
+        
+        log_container = Gtk.Box()
+        self.log_frame.add(log_container)
+
+        log_label = Gtk.Label(label="Log")
+        log_container.pack_start(log_label, True, True, 0)
 
 
 

@@ -1,22 +1,21 @@
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg
 from matplotlib.figure import Figure
+import numpy as np
+from gi.repository import Gtk
 
-class SingleGraph(Gtk.Box):
-    def __init__(self, title):
-        Gtk.Box.__init__(self, orientation=Gtk.Orientation.VERTICAL)
-        self.title = title
+
+class SingleGraph(Gtk.DrawingArea):
+    def __init__(self):
+        Gtk.DrawingArea.__init__(self)
         self.fig = Figure(figsize=(5, 4), dpi=100)
         self.ax = self.fig.add_subplot(111)
-        self.canvas = FigureCanvas(self.fig)
-        self.add(self.canvas)
-        self.ax.set_title(self.title)
+        self.ax.plot([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
 
-    def update_data(self, x_data, y_data):
-        self.ax.clear()
-        self.ax.plot(x_data, y_data)
-        self.ax.set_title(self.title)
-        self.canvas.draw()
+        self.canvas = FigureCanvasGTK3Agg(self.fig)
+        self.add(self.canvas)
+
+    def set_size_request(self, width, height):
+        Gtk.DrawingArea.set_size_request(self, width, height)
+        self.canvas.set_size_request(width, height)
 
