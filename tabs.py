@@ -57,8 +57,15 @@ class Log:
         log_container = Gtk.Box()
         self.log_frame.add(log_container)
 
-        log_label = Gtk.Label(label="Log")
-        log_container.pack_start(log_label, True, True, 0)
+        self.log_textview = Gtk.TextView()
+        log_container.pack_start(self.log_textview, True, True, 0)
+
+    def add_text(self, text):
+        buffer = self.log_textview.get_buffer()
+        end_iter = buffer.get_end_iter()
+        buffer.insert(end_iter, text)
+
+
 
 
 

@@ -18,14 +18,14 @@ class MainApp(Gtk.Window):
         control_gui = Controls()
         status_gui = Status()
         log_gui = Log()
-        
+        log_gui.add_text('hi')
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         #box.pack_start(camerafeed_gui.camerafeed_frame, True, True, 0)
         #box.pack_start(graph_gui.graph_frame, True, True, 0)
         box.pack_start(control_gui.controls_frame, True, True, 0)
         box.pack_start(status_gui.status_frame, True, True, 0)
         box.pack_start(log_gui.log_frame, True, True, 0)
-        
+
         
         self.add(box)
         
