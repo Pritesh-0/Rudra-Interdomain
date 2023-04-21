@@ -1,28 +1,21 @@
-import tkinter as tk
-from tkinter import ttk
-from tabs import *
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+
 
 class MainApp(tk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.parent = parent
-        self.parent.title("Cave Wall Climbing Robot GUI")
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Cave Wall Climbing Robot")
         
-        self.notebook = ttk.Notebook(self.parent)
-        self.notebook.pack(fill='both', expand=True)
+        self.set_border_width(10)
+        self.set_default_size(800, 600)
+        #self.fullscreen()
+        self.set_decorated(True)
         
-        self.tab1 = GPSTab(self.notebook)
-        self.tab2 = StandardTab(self.notebook)
-        self.tab3 = SettingsTab(self.notebook)
-        self.tab4 = LogsTab(self.notebook)
         
-        self.notebook.add(self.tab1, text='GPS')
-        self.notebook.add(self.tab2, text='Standard')
-        self.notebook.add(self.tab3, text='Settings')
-        self.notebook.add(self.tab4, text='Logs')
 
 if __name__ == '__main__':
-    root = tk.Tk()
-    app = MainApp(root)
-    app.pack(fill='both', expand=True)
-    root.mainloop()
+    win = CaveWallClimbingRobotGui()
+    win.connect("destroy", Gtk.main_quit)
+    win.show_all()
+    Gtk.main()
