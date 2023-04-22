@@ -14,7 +14,13 @@ class Graph:
 
         single_graph = SingleGraph()
         single_graph.set_size_request(400, 300)
-        graph_container.pack_start(single_graph, False, False, 0)
+
+        scrolled_window = Gtk.ScrolledWindow()
+        scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolled_window.add(single_graph)
+
+        graph_container.pack_start(scrolled_window, True, True, 0)
+
 
         
 class CameraFeed:
@@ -53,17 +59,18 @@ class Status:
 class Log:
     def __init__(self):
         self.log_frame = Gtk.Frame(label="Log")
-        
         log_container = Gtk.Box()
         self.log_frame.add(log_container)
 
-        self.log_textview = Gtk.TextView()
-        log_container.pack_start(self.log_textview, True, True, 0)
+        log_scroller = Gtk.ScrolledWindow()
+        log_container.pack_start(log_scroller, True, True, 0)
 
-    def add_text(self, text):
-        buffer = self.log_textview.get_buffer()
-        end_iter = buffer.get_end_iter()
-        buffer.insert(end_iter, text)
+        self.log_textview = Gtk.TextView()
+        log_scroller.add(self.log_textview)
+
+    def add(self, message):
+        self.log_textview.get_buffer().insert_at_cursor(message + "\n")
+
 
 
 
