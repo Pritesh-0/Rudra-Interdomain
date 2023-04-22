@@ -11,10 +11,10 @@ class Graph:
         self.graph_frame = Gtk.Frame(label="Graph")
         graph_container = Gtk.Box()
         self.graph_frame.add(graph_container)
-        
+
         single_graph = SingleGraph()
         single_graph.set_size_request(400, 300)
-        graph_container.pack_start(single_graph.canvas, False, False, 0)
+        graph_container.pack_start(single_graph, False, False, 0)
 
         
 class CameraFeed:
